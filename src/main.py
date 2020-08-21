@@ -93,7 +93,7 @@ def main():
             os.path.dirname(__file__),
             "assets",
             "graphics",
-            "background.png")
+            "background.jpg")
         background = pygame.image.load(filename)
         background = background.convert()
 
@@ -201,7 +201,7 @@ def main():
 
             # inicio de juego = pelota en movimiento
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                ball.start(randint(1, 3), randint(1, 3))
+                ball.start(randint(1, 6), randint(1, 6))
 
 
         screen_rect = screen.get_rect().inflate(0, -10)
@@ -212,21 +212,23 @@ def main():
 
         if ball.rect.colliderect(top) or ball.rect.colliderect(bottom):
             ball.change_y()
-            bounce.set_volume(0.3)
+            bounce.set_volume(0.2)
             bounce.play()
 
         elif (ball.rect.colliderect(pad_left.rect) or
               ball.rect.colliderect(pad_right.rect)):
             ball.change_x()
-            bounce.set_volume(0.3)
+            bounce.set_volume(0.2)
             bounce.play()
 
         if ball.rect.colliderect(left):
+            point.set_volume(1)
             point.play()
             right_score.score_up()
             ball.reset()
             ball.stop()
         elif ball.rect.colliderect(right):
+            point.set_volume(1)
             point.play()
             left_score.score_up()
             ball.reset()
