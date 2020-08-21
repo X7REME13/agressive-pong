@@ -63,21 +63,29 @@
     <option name="LAST_COMMIT_MESSAGE" value="v1.1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1339" height="179" key="GridCell.Tab.0.bottom" timestamp="1597976415234">
+    <state width="1339" height="179" key="GridCell.Tab.0.bottom" timestamp="1597981577635">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state width="1339" height="179" key="GridCell.Tab.0.bottom/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597976415234" />
-    <state width="1339" height="179" key="GridCell.Tab.0.center" timestamp="1597976415234">
+    <state width="1339" height="179" key="GridCell.Tab.0.bottom/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597981577635" />
+    <state width="1339" height="179" key="GridCell.Tab.0.center" timestamp="1597981577635">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state width="1339" height="179" key="GridCell.Tab.0.center/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597976415234" />
-    <state width="1339" height="179" key="GridCell.Tab.0.left" timestamp="1597976415234">
+    <state width="1339" height="179" key="GridCell.Tab.0.center/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597981577635" />
+    <state width="1339" height="179" key="GridCell.Tab.0.left" timestamp="1597981577635">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state width="1339" height="179" key="GridCell.Tab.0.left/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597976415234" />
-    <state width="1339" height="179" key="GridCell.Tab.0.right" timestamp="1597976415234">
+    <state width="1339" height="179" key="GridCell.Tab.0.left/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597981577635" />
+    <state width="1339" height="179" key="GridCell.Tab.0.right" timestamp="1597981577635">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state width="1339" height="179" key="GridCell.Tab.0.right/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597976415234" />
+    <state width="1339" height="179" key="GridCell.Tab.0.right/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597981577635" />
+    <state x="284" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597979091779">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="284" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597979091779" />
+    <state x="497" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597981562767">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="497" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1360.728/-1366.0.1093.574@0.0.1360.728" timestamp="1597981562767" />
   </component>
 </project>

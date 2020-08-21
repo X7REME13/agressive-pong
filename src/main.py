@@ -1,5 +1,5 @@
 import os, sys, pygame
-from random import randint
+from random import randint, choice
 
 
 class Ball(pygame.sprite.Sprite):
@@ -36,7 +36,7 @@ class Ball(pygame.sprite.Sprite):
 class Pad(pygame.sprite.Sprite):
     def __init__(self, pos=(0, 0), color=(0, 0, 0)):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((12, 70)).convert()
+        self.image = pygame.Surface((20, 70)).convert()
         self.image.fill(color)
         self.rect = self.image.get_rect(center=pos)
         self.max_speed_y = 10
@@ -138,11 +138,26 @@ def main():
         print('Cannot load sound: ', filename)
         raise SystemExit(str(e))
 
+    try:
+        filename = os.path.join(
+            os.path.dirname(__file__),
+            'assets',
+            'sounds',
+            'ambient.wav')
+        ambient = pygame.mixer.Sound(filename)
+    except pygame.error as e:
+        print('Cannot load sound: ', filename)
+        raise SystemExit(str(e))
+
+    pygame.mixer.init()
+
+    ambient.play(-1)
+
     left_score = Score(font, (width / 3, height / 8))
     right_score = Score(font, (2 * width / 3, height / 8))
 
-    pad_left = Pad((width / 6, height / 4),(30, 180, 233))
-    pad_right = Pad((5 * width / 6, 3 * height / 4),(180, 233, 30))
+    pad_left = Pad((width / 6, height / 4), (30, 180, 233))
+    pad_right = Pad((5 * width / 6, 3 * height / 4), (180, 233, 30))
 
     ball = Ball((width / 2, height / 2))
 
@@ -151,7 +166,7 @@ def main():
     clock = pygame.time.Clock()
     fps = 60
 
-    pygame.key.set_repeat(1, int(1000 / fps))
+    pygame.key.set_repeat(1, int(2000 / fps))
 
     top = pygame.Rect(0, 0, width, 5)
     bottom = pygame.Rect(0, height - 5, width, 5)
@@ -164,8 +179,9 @@ def main():
     right = pygame.Rect(width - 5, 0, 5, height)
     arena_right = pygame.Rect(width - int(width * 0.75), 2, int(width * 0.75), height)
     arena_left = pygame.Rect(0, 1, int(width * 0.75), height)
+    starteado = True
 
-    
+
 
     while 1:
 
@@ -179,36 +195,34 @@ def main():
                 pygame.quit()
                 return
 
-            # movimiento pad izquierdo = jugador 1
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_w:
+            keys = pygame.key.get_pressed()
+
+            if keys[pygame.K_SPACE] and starteado:
+                ball.start(2 * choice((-1, 1)), randint(1, 3) * choice((-1, 1)))
+                starteado = False
+
+            if keys[pygame.K_w]:  # 276
                 pad_left.move_up()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_s:
+            if keys[pygame.K_s]:  # 275
                 pad_left.move_down()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+            if keys[pygame.K_a]:  # 97
                 pad_left.move_left()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_d:
+            if keys[pygame.K_d]:  # 100
                 pad_left.move_right()
 
-            # movimiento pad derecho = jugador 2
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
+            if keys[pygame.K_UP]:  # 97
                 pad_right.move_up()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+            if keys[pygame.K_DOWN]:  # 100
                 pad_right.move_down()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+            if keys[pygame.K_LEFT]:  # 276
                 pad_right.move_left()
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+            if keys[pygame.K_RIGHT]:  # 275
                 pad_right.move_right()
-
-            # inicio de juego = pelota en movimiento
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                ball.start(randint(1, 6), randint(1, 6))
-
 
         screen_rect = screen.get_rect().inflate(0, -10)
 
         pad_left.rect.clamp_ip(arena_left)
         pad_right.rect.clamp_ip(arena_right)
-
 
         if ball.rect.colliderect(top) or ball.rect.colliderect(bottom):
             ball.change_y()
@@ -227,12 +241,17 @@ def main():
             right_score.score_up()
             ball.reset()
             ball.stop()
+            # ball.start(1*randint(1, right_score.score+1), randint(1, 3) * choice((-1, 1)))
+            starteado = True
         elif ball.rect.colliderect(right):
             point.set_volume(1)
             point.play()
             left_score.score_up()
             ball.reset()
             ball.stop()
+            # ball.start(-1*randint(1, left_score.score+1)), randint(1, 3) * choice((-1, 1))
+            starteado = True
+
 
         sprites.update()
 
